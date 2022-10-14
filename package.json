@@ -1,0 +1,30 @@
+{
+  "name": "carrito-de-compras",
+  "version": "1.0.0",
+  "description": "a backend project",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davquipe/carrito-de-compras.git"
+  },
+  "keywords": [],
+  "author": "davquipe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davquipe/carrito-de-compras/issues"
+  },
+  "homepage": "https://github.com/davquipe/carrito-de-compras#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
