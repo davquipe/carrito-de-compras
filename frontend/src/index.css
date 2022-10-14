@@ -53,3 +53,9 @@ main {
 .color-cart {
   color: #ffffff;
 }
+
+.img-thumbnail {
+  width: 100%;
+  max-width: 100px;
+  /* height: 80px; */
+}
