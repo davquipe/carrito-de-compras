@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, Varela Round, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -15,15 +17,16 @@ main {
   flex: 1;
 }
 
+.btn-primary {
+  background-color: #f5a623;
+  border-color: #f5a623;
+  color: #000;
+}
+
 .products {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.product {
-  border: 1px #404040 solid;
-  margin: 1rem;
 }
 
 .product img {
@@ -37,4 +40,8 @@ main {
 
 .product-info a {
   text-decoration: none;
+}
+
+.rating span {
+  color: #ffc000;
 }
