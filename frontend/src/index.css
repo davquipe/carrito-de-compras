@@ -59,3 +59,7 @@ main {
   max-width: 100px;
   /* height: 80px; */
 }
+
+.small-container {
+  max-width: 600px;
+}
