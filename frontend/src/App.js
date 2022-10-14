@@ -25,7 +25,7 @@ function App() {
                   <i className="fas fa-shopping-cart color-cart"></i>
                   {cart.cartItems.length > 0 && (
                     <span className="badge bg-warning text-dark">
-                      {cart.cartItems.length}
+                      {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
                     </span>
                   )}
                 </Link>
