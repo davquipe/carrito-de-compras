@@ -1,4 +1,5 @@
 import React, { useEffect, useReducer } from 'react';
+// import data from '../data';
 import axios from 'axios';
 import logger from 'use-reducer-logger';
 import Row from 'react-bootstrap/Row';
@@ -27,17 +28,17 @@ function HomeScreen() {
     loading: true,
     error: '',
   });
-  //   const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
-        const result = await axios.get('/api/products');
-        dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
+        const resutl = await axios.get('/api/products');
+        dispatch({ type: 'FETCH_SUCCESS', payload: resutl.data });
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: err.message });
       }
-      //   setProducts(result.data);
+      // setProducts(resutl.data);
     };
     fetchData();
   }, []);
@@ -47,7 +48,7 @@ function HomeScreen() {
       <Helmet>
         <title>Tech</title>
       </Helmet>
-      <h1>Productos Destacados</h1>
+      <h1>Productos</h1>
       <div className="products">
         {loading ? (
           <LoadingBox />
@@ -56,8 +57,8 @@ function HomeScreen() {
         ) : (
           <Row>
             {products.map((product) => (
-              <Col sm={6} md={4} lg={3} className="mb-3">
-                <Product key={product._id} product={product} />
+              <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3">
+                <Product product={product}></Product>
               </Col>
             ))}
           </Row>

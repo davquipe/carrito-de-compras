@@ -1,30 +1,36 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import Axios from 'axios';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/esm/Button';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import { Helmet } from 'react-helmet-async';
+import { useContext, useEffect, useState } from 'react';
 import { Store } from '../Store';
 import { toast } from 'react-toastify';
 import { getError } from '../utils';
 
-export default function SigninScreen() {
+export default function SignupScreen() {
   const navigate = useNavigate();
   const { search } = useLocation();
   const redirectInUrl = new URLSearchParams(search).get('redirect');
   const redirect = redirectInUrl ? redirectInUrl : '/';
 
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
-
   const submitHandler = async (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match');
+      return;
+    }
     try {
-      const { data } = await Axios.post('/api/users/signin', {
+      const { data } = await Axios.post('/api/users/signup', {
+        name,
         email,
         password,
       });
@@ -45,17 +51,26 @@ export default function SigninScreen() {
   return (
     <Container className="small-container">
       <Helmet>
-        <title>Inicio de Sesion</title>
+        <title>Crear una cuenta</title>
       </Helmet>
-      <h1 className="my-3">Iniciar Sesion</h1>
+      <h1 className="my-3">Crear una Cuenta</h1>
       <Form onSubmit={submitHandler}>
+        <Form.Group className="mb-3" controlId="name">
+          <Form.Label>Nombre</Form.Label>
+          <Form.Control
+            onChange={(e) => setName(e.target.value)}
+            required
+            placeholder="Ingrese su nombre"
+          />
+        </Form.Group>
+
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Correo electrónico</Form.Label>
           <Form.Control
             type="email"
             required
+            placeholder="Ingrese su correo electronico"
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="david@gmail.com"
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="password">
@@ -63,16 +78,25 @@ export default function SigninScreen() {
           <Form.Control
             type="password"
             required
+            placeholder="********"
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="123456"
           />
+          <Form.Group className="mb-3" controlId="confirmPassword">
+            <Form.Label>Repetir tu Contraseña</Form.Label>
+            <Form.Control
+              type="password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+              placeholder="********"
+            />
+          </Form.Group>
         </Form.Group>
-        <div className="mb-3">
-          <Button type="submit">Iniciar Sesion</Button>
+        <div className="mb-3 d-grid">
+          <Button type="submit">Registrarse</Button>
         </div>
         <div className="mb-3">
-          Cliente Nuevo?{' '}
-          <Link to={`/signup?redirect=${redirect}`}>Crea tu cuenta aqui</Link>
+          Tienes una cuenta?{' '}
+          <Link to={`/signin?redirect=${redirect}`}>Iniciar Sesion</Link>
         </div>
       </Form>
     </Container>

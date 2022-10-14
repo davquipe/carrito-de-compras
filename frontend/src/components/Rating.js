@@ -1,7 +1,5 @@
-import React from 'react';
-
 function Rating(props) {
-  const { rating, numReviews } = props;
+  const { rating, numReviews, caption } = props;
   return (
     <div className="rating">
       <span>
@@ -13,7 +11,7 @@ function Rating(props) {
               ? 'fas fa-star-half-alt'
               : 'far fa-star'
           }
-        ></i>
+        />
       </span>
       <span>
         <i
@@ -24,7 +22,7 @@ function Rating(props) {
               ? 'fas fa-star-half-alt'
               : 'far fa-star'
           }
-        ></i>
+        />
       </span>
       <span>
         <i
@@ -35,7 +33,7 @@ function Rating(props) {
               ? 'fas fa-star-half-alt'
               : 'far fa-star'
           }
-        ></i>
+        />
       </span>
       <span>
         <i
@@ -46,7 +44,7 @@ function Rating(props) {
               ? 'fas fa-star-half-alt'
               : 'far fa-star'
           }
-        ></i>
+        />
       </span>
       <span>
         <i
@@ -57,11 +55,14 @@ function Rating(props) {
               ? 'fas fa-star-half-alt'
               : 'far fa-star'
           }
-        ></i>
-      </span>{' '}
-      <span>{numReviews + ' reseñas'}</span>
+        />
+      </span>
+      {caption ? (
+        <span>{caption}</span>
+      ) : (
+        <span>{' ' + numReviews + ' reviews'}</span>
+      )}
     </div>
   );
 }
-
 export default Rating;

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { Store } from '../Store';
 import { Helmet } from 'react-helmet-async';
 import Row from 'react-bootstrap/Row';
@@ -20,7 +20,7 @@ export default function CartScreen() {
   const updateCartHandler = async (item, quantity) => {
     const { data } = await axios.get(`/api/products/${item._id}`);
     if (data.countInStock < quantity) {
-      window.alert('Lo siento. El producto no está en stock');
+      window.alert('Sorry. Product is out of stock');
       return;
     }
     ctxDispatch({
@@ -28,6 +28,7 @@ export default function CartScreen() {
       payload: { ...item, quantity },
     });
   };
+
   const removeItemHandler = (item) => {
     ctxDispatch({ type: 'CART_REMOVE_ITEM', payload: item });
   };
@@ -41,12 +42,12 @@ export default function CartScreen() {
       <Helmet>
         <title>Carrito de compras</title>
       </Helmet>
-      <h1>Carrito de Compras</h1>
+      <h1>Carrito de compras</h1>
       <Row>
         <Col md={8}>
           {cartItems.length === 0 ? (
             <MessageBox>
-              El carrito está vacío. <Link to="/">Ir de compras</Link>
+              El carrito esta vacío. <Link to="/">Ir de compras</Link>
             </MessageBox>
           ) : (
             <ListGroup>
@@ -63,10 +64,10 @@ export default function CartScreen() {
                     </Col>
                     <Col md={3}>
                       <Button
+                        variant="light"
                         onClick={() =>
                           updateCartHandler(item, item.quantity - 1)
                         }
-                        variant="light"
                         disabled={item.quantity === 1}
                       >
                         <i className="fas fa-minus-circle"></i>
@@ -104,7 +105,7 @@ export default function CartScreen() {
                 <ListGroup.Item>
                   <h3>
                     Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
-                    artículos) : S/
+                    Articulos) : S/
                     {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
                   </h3>
                 </ListGroup.Item>
@@ -116,7 +117,7 @@ export default function CartScreen() {
                       onClick={checkoutHandler}
                       disabled={cartItems.length === 0}
                     >
-                      Pasar al pago
+                      Pasar por la caja
                     </Button>
                   </div>
                 </ListGroup.Item>

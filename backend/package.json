@@ -1,5 +1,5 @@
 {
-  "name": "carrito-de-compras",
+  "name": "backend",
   "version": "1.0.0",
   "description": "a backend project",
   "main": "index.js",
@@ -10,24 +10,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davquipe/carrito-de-compras.git"
+    "url": "git+https://github.com/davquipe/mern-amazona.git"
   },
-  "keywords": [],
   "author": "davquipe",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/davquipe/carrito-de-compras/issues"
+    "url": "https://github.com/davquipe/mern-amazona/issues"
   },
-  "homepage": "https://github.com/davquipe/carrito-de-compras#readme",
+  "homepage": "https://github.com/davquipe/mern-amazona#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
+    "cloudinary": "^1.32.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.6.5"
+    "mongoose": "^6.5.3",
+    "multer": "^1.4.5-lts.1",
+    "streamifier": "^0.1.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.19"
   }
 }

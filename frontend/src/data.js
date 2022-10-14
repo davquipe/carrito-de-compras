@@ -1,7 +1,23 @@
+import bcrypt from 'bcryptjs';
+
 const data = {
+  users: [
+    {
+      name: 'Mark',
+      email: 'mark@facebook.com',
+      password: bcrypt.hashSync('123456'),
+      isAdmin: true,
+    },
+    {
+      name: 'David',
+      email: 'david@gmail.com',
+      password: bcrypt.hashSync('123456'),
+      isAdmin: false,
+    },
+  ],
   products: [
     {
-      _id: '1',
+      // _id: '1',
       name: 'Mac Book Air',
       slug: 'mac-book-air',
       category: 'Mac',
@@ -16,7 +32,7 @@ const data = {
         'Diseño Menos peso. Más de todo. Revolucionado con el nuevo chip M2, el MacBook Air cautiva no solo por el diseño ultrafino sino por la rapidez y eficiencia que esconde su resistente carcasa de aluminio. Con un ordenador tan versátil podrás trabajar, jugar y liberar toda tu creatividad vayas donde vayas.',
     },
     {
-      _id: '2',
+      // _id: '2',
       name: 'Mac Book Pro',
       slug: 'mac-book-pro',
       category: 'Mac',
@@ -31,21 +47,21 @@ const data = {
         'Diseño Menos peso. Más de todo. Revolucionado con el nuevo chip M2, el MacBook Pro cautiva no solo por el diseño ultrafino sino por la rapidez y eficiencia que esconde su resistente carcasa de aluminio. Con un ordenador tan versátil podrás trabajar, jugar y liberar toda tu creatividad vayas donde vayas.',
     },
     {
-      _id: '3',
+      // _id: '3',
       name: 'iPhone 11',
       slug: 'iphone-11',
       category: 'Smartphone',
       image:
         'https://res.cloudinary.com/dxm7e3hhl/image/upload/v1665711902/p8_xlziil.jpg',
       price: 250,
-      countInStock: 20,
+      countInStock: 0,
       brand: 'Apple',
       rating: 4.0,
       numReviews: 10,
       description: 'high quality product',
     },
     {
-      _id: '4',
+      // _id: '4',
       name: 'iPhone 12',
       slug: 'iphone-12',
       category: 'Smartphone',
@@ -59,7 +75,7 @@ const data = {
       description: 'high quality product',
     },
     {
-      _id: '5',
+      // _id: '5',
       name: 'AirPods Max',
       slug: 'airpods-max',
       category: 'AirPods',
@@ -73,7 +89,7 @@ const data = {
       description: 'high quality product',
     },
     {
-      _id: '6',
+      // _id: '6',
       name: 'iPhone 13',
       slug: 'iphone-13',
       category: 'Smartphone',
@@ -88,14 +104,14 @@ const data = {
         'Detección de Accidentes pide ayuda por ti cuando tú no puedes',
     },
     {
-      _id: '7',
+      // _id: '7',
       name: 'iPhone SE 2022',
       slug: 'iphone-se-2022',
       category: 'Smartphone',
       image:
         'https://res.cloudinary.com/dxm7e3hhl/image/upload/v1665711902/p5_fcx0xj.jpg',
       price: 299,
-      countInStock: 10,
+      countInStock: 0,
       brand: 'Apple',
       rating: 3.5,
       numReviews: 30,
@@ -103,7 +119,7 @@ const data = {
         'Wolframio 100 % reciclado en el Taptic Engine, que supone el 100 % del wolframio del dispositivo',
     },
     {
-      _id: '8',
+      // _id: '8',
       name: 'AirPods Pro',
       slug: 'airpods-pro',
       category: 'AirPods',

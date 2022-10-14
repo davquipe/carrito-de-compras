@@ -1,7 +1,7 @@
 {
   "name": "carrito-de-compras",
   "version": "1.0.0",
-  "description": "",
+  "description": "carrito de compras",
   "main": "index.js",
   "scripts": {
     "build": "cd backend && npm install  && cd ../frontend && npm install -f && npm run build",
@@ -14,7 +14,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/davquipe/carrito-de-compras/issues"
   },

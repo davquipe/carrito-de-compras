@@ -10,6 +10,7 @@ export default function ShippingAddressScreen() {
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
+    fullBox,
     userInfo,
     cart: { shippingAddress },
   } = state;
@@ -35,6 +36,7 @@ export default function ShippingAddressScreen() {
         city,
         postalCode,
         country,
+        location: shippingAddress.location,
       },
     });
     localStorage.setItem(
@@ -45,36 +47,42 @@ export default function ShippingAddressScreen() {
         city,
         postalCode,
         country,
+        location: shippingAddress.location,
       })
     );
     navigate('/payment');
   };
+
+  useEffect(() => {
+    ctxDispatch({ type: 'SET_FULLBOX_OFF' });
+  }, [ctxDispatch, fullBox]);
+
   return (
     <div>
       <Helmet>
-        <title>Direccion de Envio</title>
+        <title>Dirección de envío</title>
       </Helmet>
 
       <CheckoutSteps step1 step2></CheckoutSteps>
       <div className="container small-container">
-        <h1 className="my-3">Shipping Address</h1>
+        <h1 className="my-3">Dirección de envío</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="fullName">
-            <Form.Label>Nombre Completo</Form.Label>
+            <Form.Label>Nombres Completos</Form.Label>
             <Form.Control
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               required
-              placeholder="Ingrese su nombre completo"
+              placeholder="Steve Jobs"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="address">
-            <Form.Label>Direccion</Form.Label>
+            <Form.Label>Dirección</Form.Label>
             <Form.Control
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               required
-              placeholder="Ingrese su direccion"
+              placeholder="1911, 65 Rue Sherbrooke Est"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="city">
@@ -83,7 +91,7 @@ export default function ShippingAddressScreen() {
               value={city}
               onChange={(e) => setCity(e.target.value)}
               required
-              placeholder="Ingrese su ciudad"
+              placeholder="Distict 19"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="postalCode">
@@ -92,7 +100,7 @@ export default function ShippingAddressScreen() {
               value={postalCode}
               onChange={(e) => setPostalCode(e.target.value)}
               required
-              placeholder="Ingrese su codigo postal"
+              placeholder="H2X1C4"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="country">
@@ -101,12 +109,13 @@ export default function ShippingAddressScreen() {
               value={country}
               onChange={(e) => setCountry(e.target.value)}
               required
-              placeholder="Ingrese su pais"
+              placeholder="Peru"
             />
           </Form.Group>
+
           <div className="mb-3">
             <Button variant="primary" type="submit">
-              Siguente
+              Siguiente
             </Button>
           </div>
         </Form>

@@ -1,3 +1,5 @@
+import Axios from 'axios';
+import React, { useContext, useEffect, useReducer } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
@@ -5,12 +7,10 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { Store } from '../Store';
-import CheckoutSteps from '../components/CheckoutSteps';
-import Axios from 'axios';
-import React, { useContext, useEffect, useReducer } from 'react';
 import { toast } from 'react-toastify';
 import { getError } from '../utils';
+import { Store } from '../Store';
+import CheckoutSteps from '../components/CheckoutSteps';
 import LoadingBox from '../components/LoadingBox';
 
 const reducer = (state, action) => {
@@ -92,10 +92,10 @@ export default function PlaceOrderScreen() {
         <Col md={8}>
           <Card className="mb-3">
             <Card.Body>
-              <Card.Title>Transporte</Card.Title>
+              <Card.Title>Envio</Card.Title>
               <Card.Text>
-                <strong>Nombre:</strong> {cart.shippingAddress.fullName} <br />
-                <strong>Direccion: </strong> {cart.shippingAddress.address},
+                <strong>Nombres:</strong> {cart.shippingAddress.fullName} <br />
+                <strong>Dirección: </strong> {cart.shippingAddress.address},
                 {cart.shippingAddress.city}, {cart.shippingAddress.postalCode},
                 {cart.shippingAddress.country}
               </Card.Text>
@@ -131,7 +131,7 @@ export default function PlaceOrderScreen() {
                       <Col md={3}>
                         <span>{item.quantity}</span>
                       </Col>
-                      <Col md={3}>S/{item.price}</Col>
+                      <Col md={3}>${item.price}</Col>
                     </Row>
                   </ListGroup.Item>
                 ))}
@@ -153,7 +153,7 @@ export default function PlaceOrderScreen() {
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <Row>
-                    <Col>Transporte</Col>
+                    <Col>Envio</Col>
                     <Col>S/{cart.shippingPrice.toFixed(2)}</Col>
                   </Row>
                 </ListGroup.Item>
@@ -166,7 +166,7 @@ export default function PlaceOrderScreen() {
                 <ListGroup.Item>
                   <Row>
                     <Col>
-                      <strong> Total de pedido</strong>
+                      <strong> Total del pedido</strong>
                     </Col>
                     <Col>
                       <strong>S/{cart.totalPrice.toFixed(2)}</strong>
