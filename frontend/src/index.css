@@ -18,9 +18,9 @@ main {
 }
 
 .btn-primary {
-  background-color: #f5a623;
-  border-color: #f5a623;
-  color: #000;
+  background-color: #6a148e;
+  border-color: #6a148e;
+  color: #ffffff;
 }
 
 .products {
@@ -48,4 +48,8 @@ main {
 
 .img-large {
   max-width: 100%;
+}
+
+.color-cart {
+  color: #ffffff;
 }
